@@ -18,7 +18,6 @@ function addDropDownOptions(elem, arr){
   } else {
     elem.property("value", arr[0]);
   }
-
 }
 
 function addRowToTable(ufoSighting){
@@ -56,12 +55,14 @@ function filter_by(){
   updateDropDownLists(filteredData);
 };
 
-// Using the UFO dataset provided in the form of an array of JavaScript
-// objects, write code that appends a table to your web page and then 
-// adds new rows of data for each UFO sighting.
-
-
-d3.select("#list-all").on("click",listAll());
+d3.select("#list-all").on("click",function(){
+  d3.selectAll("option").remove();
+  tableData.forEach(ufoSighting => addRowToTable(ufoSighting));
+  for (var i = 0; i < keys.length; i++){
+    updateDropDownLists(tableData);
+  }
+}
+);
 
 function listAll(){
   d3.selectAll("option").remove();
@@ -88,3 +89,15 @@ const
   addDropDownOptions(d3.select("#shapes"), shapes.filter(unique).sort());
 }
   
+
+// Using the UFO dataset provided in the form of an array of JavaScript
+// objects, write code that appends a table to your web page and then 
+// adds new rows of data for each UFO sighting.
+
+
+d3.selectAll("option").remove();
+tableData.forEach(ufoSighting => addRowToTable(ufoSighting));
+for (var i = 0; i < keys.length; i++){
+  updateDropDownLists(tableData);
+}
+
