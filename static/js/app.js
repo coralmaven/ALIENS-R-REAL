@@ -29,7 +29,7 @@ const keyElem = ['#datetime', '#city', '#state', '#country', '#shape']
 addDropDownOptions(d3.select("#datetime"), dates.filter(unique).sort());
 addDropDownOptions(d3.select("#city"), cities.filter(unique).sort());
 addDropDownOptions(d3.select("#state"), states.filter(unique).sort());
-addDropDownOptions(d3.select("#state"), countries.filter(unique).sort());
+addDropDownOptions(d3.select("#country"), countries.filter(unique).sort());
 addDropDownOptions(d3.select("#shape"), shapes.filter(unique).sort());
 
 function addRowToTable(ufoSighting){
